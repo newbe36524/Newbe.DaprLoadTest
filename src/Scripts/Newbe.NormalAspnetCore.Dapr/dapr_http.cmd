@@ -1,0 +1,1 @@
+k6 run dapr_http.js > dapr_http.result.txt

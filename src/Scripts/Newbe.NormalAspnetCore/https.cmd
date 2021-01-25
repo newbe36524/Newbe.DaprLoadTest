@@ -1,0 +1,1 @@
+k6 run https.js > https.result.txt
