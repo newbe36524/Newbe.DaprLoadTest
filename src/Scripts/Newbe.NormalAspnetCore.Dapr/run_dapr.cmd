@@ -1,1 +1,0 @@
-dapr run -a newbe-normalaspnetcore -p 50000 -H 60000 -G 60001 -- dotnet run -p ../../Newbe.NormalAspnetCore/Newbe.NormalAspnetCore.csproj --launch-profile Newbe.NormalAspnetCore.Dapr -c Release

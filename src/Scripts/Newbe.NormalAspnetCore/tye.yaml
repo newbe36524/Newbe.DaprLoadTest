@@ -1,0 +1,23 @@
+# tye application configuration file
+# read all about it at https://github.com/dotnet/tye
+#
+# when you've given us a try, we'd love to know what you think:
+#    https://aka.ms/AA7q20u
+#
+name: newbe.daprloadtest
+registry: newbe36524
+services:
+  - name: newbe-normalaspnetcore
+    bindings:
+      - name: http
+        protocol: http
+    project: ../../Newbe.DaprAspnetCore/Newbe.DaprAspnetCore.csproj
+
+ingress:
+  - name: newbe
+    bindings:
+      - name: newbe
+        protocol: http
+    rules:
+      - service: newbe-normalaspnetcore
+        path: /n

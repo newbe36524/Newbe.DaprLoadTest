@@ -1,0 +1,14 @@
+GET http://localhost/n/WeatherForecast
+
+###
+
+GET http://localhost/dh/WeatherForecast
+
+###
+
+GET http://localhost/dh/WeatherForecastDaprHttp?port=3500&appId=newbe-normalaspnetcore&methodName=WeatherForecast
+
+###
+
+GET http://localhost/dh/WeatherForecastDaprGrpc?appId=newbe-normalaspnetcore&methodName=WeatherForecast
+

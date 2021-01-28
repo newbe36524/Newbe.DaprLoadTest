@@ -28,6 +28,7 @@ namespace Newbe.DaprAspnetCore
         {
             services.AddControllers()
                 .AddDapr();
+            services.AddHttpClient();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "Newbe.DaprAspnetCore", Version = "v1"});

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Dapr.Client;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -19,25 +18,23 @@ namespace Newbe.DaprAspnetCore.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
-        private readonly DaprClient _daprClient;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger,
-            DaprClient daprClient)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
-            _daprClient = daprClient;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<WeatherForecast>> Get()
+        public IEnumerable<WeatherForecast> Get()
         {
-            var re = await _daprClient.InvokeMethodAsync<IEnumerable<WeatherForecast>>(
-                "newbe-normalaspnetcore",
-                "WeatherForecast",new HttpInvocationOptions
+            var rng = new Random();
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
                 {
-                    Method = HttpMethod.Get
-                });
-            return re;
+                    Date = DateTime.Now.AddDays(index),
+                    TemperatureC = rng.Next(-20, 55),
+                    Summary = Summaries[rng.Next(Summaries.Length)]
+                })
+                .ToArray();
         }
     }
 }

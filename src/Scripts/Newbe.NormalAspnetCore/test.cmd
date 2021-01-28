@@ -1,0 +1,1 @@
+k6 run test.js > test.result.txt
